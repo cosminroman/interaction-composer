@@ -1,0 +1,383 @@
+{
+  "buildInfo": {
+    "rustc": {
+      "version": "1.61.0-nightly",
+      "commitHash": "45e2c2881d11324d610815bfff097e25c412199e",
+      "commitDate": "2022-02-20",
+      "channel": "Nightly",
+      "short": "rustc 1.61.0-nightly (45e2c2881 2022-02-20)"
+    },
+    "contractCrate": {
+      "name": "mylotteryegld",
+      "version": "0.0.0"
+    },
+    "framework": {
+      "name": "elrond-wasm",
+      "version": "0.30.0"
+    }
+  },
+  "name": "LotteryEgld",
+  "constructor": {
+    "inputs": [
+      {
+        "name": "maxticketsperwallet",
+        "type": "u64"
+      },
+      {
+        "name": "ticketprice",
+        "type": "BigUint"
+      },
+      {
+        "name": "maxticketsperlottery",
+        "type": "u64"
+      }
+    ],
+    "outputs": []
+  },
+  "endpoints": [
+    {
+      "name": "fund",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "payableInTokens": [
+        "EGLD"
+      ],
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "change_deadline",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "deadline",
+          "type": "u64"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "start_lottery",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "deadline",
+          "type": "u64"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "docs": [
+        "Pay ticket"
+      ],
+      "name": "buy_tickets",
+      "mutability": "mutable",
+      "payableInTokens": [
+        "EGLD"
+      ],
+      "inputs": [
+        {
+          "name": "tickets",
+          "type": "u64"
+        },
+        {
+          "name": "_opt_ref",
+          "type": "optional<bytes>",
+          "multi_arg": true
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "draw_winner",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [],
+      "outputs": []
+    },
+    {
+      "name": "claim_funds",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "funds",
+          "type": "BigUint"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "set_lottery_counter",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "counter",
+          "type": "u64"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "setteamwallet",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "Address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "setnftwallet",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "Address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "setecfwallet",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "Address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "setmarketingwallet",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "Address"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "set_maxtickets_per_wallet",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "maxtickets",
+          "type": "u64"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "set_price",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "price",
+          "type": "BigUint"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "set_prizepool",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "prize",
+          "type": "BigUint"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "set_maxtickets_per_lottery",
+      "onlyOwner": true,
+      "mutability": "mutable",
+      "inputs": [
+        {
+          "name": "tickets",
+          "type": "u64"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "name": "getPrizePool",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "BigUint"
+        }
+      ]
+    },
+    {
+      "name": "getStatus",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "LotteryStatus"
+        }
+      ]
+    },
+    {
+      "name": "getTicketHolder",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "variadic<Address>",
+          "multi_result": true
+        }
+      ]
+    },
+    {
+      "name": "getDeadline",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "getPrize",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "BigUint"
+        }
+      ]
+    },
+    {
+      "name": "getVolume",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "BigUint"
+        }
+      ]
+    },
+    {
+      "name": "getCounterTickets",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "getCounterLottery",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "getWinner",
+      "mutability": "readonly",
+      "inputs": [
+        {
+          "name": "lottery",
+          "type": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "Address"
+        }
+      ]
+    },
+    {
+      "name": "getTicketsPerAddress",
+      "mutability": "readonly",
+      "inputs": [
+        {
+          "name": "address",
+          "type": "Address"
+        },
+        {
+          "name": "lottery",
+          "type": "u64"
+        }
+      ],
+      "outputs": [
+        {
+          "type": "BigUint"
+        }
+      ]
+    },
+    {
+      "name": "getMaxTicketsPerAddress",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "getTicketPrice",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "BigUint"
+        }
+      ]
+    },
+    {
+      "name": "getMaxTickersPerLottery",
+      "mutability": "readonly",
+      "inputs": [],
+      "outputs": [
+        {
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "hasCallback": false,
+  "types": {
+    "LotteryStatus": {
+      "type": "enum",
+      "variants": [
+        {
+          "name": "Closed",
+          "discriminant": 0
+        },
+        {
+          "name": "Opened",
+          "discriminant": 1
+        }
+      ]
+    }
+  }
+}

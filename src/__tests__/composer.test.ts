@@ -25,8 +25,8 @@ describe('test composer', () => {
     expect(query.args[1].valueOf()).toEqual(new U64Value(5).valueOf());
   });
 
-  it('should interact and compose a call', async function () {
-    const call = await composer.composeCall({
+  it('should interact and compose a transaction', async function () {
+    const transaction = await composer.composeTransaction({
       functionName: 'buy_tickets',
       args: {
         tickets: 1,
@@ -34,6 +34,6 @@ describe('test composer', () => {
       },
     });
 
-    expect(call.getData().toString()).toEqual('buy_tickets@01@37756836716e');
+    expect(transaction.getData().toString()).toEqual('buy_tickets@01@37756836716e');
   });
 });

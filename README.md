@@ -22,7 +22,7 @@ const query = await composer.composeQuery({
 
 __________________________________________
 
-const call = await composer.composeCall({
+const transaction = await composer.composeTransaction({
   functionName: 'myFunction',
   args: {
     a: "foo",
@@ -32,6 +32,27 @@ const call = await composer.composeCall({
 
 // transaction is (almost) ready to be broadcasted
 // set nonce, sign transaction
+
+__________________________________________
+
+const queryResults = await composer.composeQuery({
+  functionName: 'myFunction',
+  args: {
+    a: "foo",
+    b: "bar"
+  },
+});
+
+__________________________________________
+
+const transactionResults = await composer.runTransaction({
+  functionName: 'myFunction',
+  pem: 'pemFile',
+  args: {
+    a: "foo",
+    b: "bar"
+  },
+});
 ```
 
 ### Building the library

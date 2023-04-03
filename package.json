@@ -31,6 +31,8 @@
     "typescript": "^5.0.2"
   },
   "peerDependencies": {
-    "@multiversx/sdk-core": "*"
+    "@multiversx/sdk-core": "*",
+    "@multiversx/sdk-network-providers": "*",
+    "@multiversx/sdk-wallet": "*"
   }
 }
